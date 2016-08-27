@@ -1,0 +1,1153 @@
+﻿<html>
+<head>
+    <title>
+        Pokemon Radar
+    </title>
+
+    <link rel="stylesheet" href="files/bootstrap.min.css">
+
+    <link rel="stylesheet" href="files/bootstrap-theme.min.css">
+
+    <link href="files/dashboard.css" rel="stylesheet">
+
+    <script src="files/jquery-latest.min.js" type="text/javascript"></script>
+
+    <script src="files/bootstrap.min.js"></script>
+
+
+    <link href="files/dataTables.bootstrap.css" rel="stylesheet" />
+    <script src="files/jquery.dataTables.min.js"></script>
+
+
+    <style>
+        .sidebar img {
+            width: 30px;
+        }
+
+        .nav > li > a {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Pokémon Sofisa Team</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <form id="formbusca" class="navbar-form navbar-right">
+                    <select class="form-control" id="minutos">
+                        <option>Qualquer momento</option>
+                        <option>0 minutos</option>
+                        <option>10 minutos</option>
+                        <option>15 minutos</option>
+                        <option>20 minutos</option>
+                    </select>
+
+                    <input type="text" id="idpok" class="form-control" placeholder="Id do Pokémon">
+
+                    <label for="onlyprediction" style="color: #FFFFFF;">Somente Previsão</label>
+                    <input class="form-control" type="checkbox" id="onlyprediction" alt="Somente Previsão" />
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar" id="pokemon-search-list" aria-labelledby="pokemon-search">
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="0">
+                            All
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="63">
+                            <img src="files/63.png" class="icon">
+                            Abra
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="142">
+                            <img src="files/142.png" class="icon">
+                            Aerodactyl
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="65">
+                            <img src="files/65.png" class="icon">
+                            Alakazam
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="24">
+                            <img src="files/24.png" class="icon">
+                            Arbok
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="59">
+                            <img src="files/59.png" class="icon">
+                            Arcanine
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="144">
+                            <img src="files/144.png" class="icon">
+                            Articuno
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="15">
+                            <img src="files/15.png" class="icon">
+                            Beedrill
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="69">
+                            <img src="files/69.png" class="icon">
+                            Bellsprout
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="9">
+                            <img src="files/9.png" class="icon">
+                            Blastoise
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="1">
+                            <img src="files/1.png" class="icon">
+                            Bulbasaur
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="12">
+                            <img src="files/12.png" class="icon">
+                            Butterfree
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="10">
+                            <img src="files/10.png" class="icon">
+                            Caterpie
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="113">
+                            <img src="files/113.png" class="icon">
+                            Chansey
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="6">
+                            <img src="files/6.png" class="icon">
+                            Charizard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="4">
+                            <img src="files/4.png" class="icon">
+                            Charmander
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="5">
+                            <img src="files/5.png" class="icon">
+                            Charmeleon
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="36">
+                            <img src="files/36.png" class="icon">
+                            Clefable
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="35">
+                            <img src="files/35.png" class="icon">
+                            Clefairy
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="91">
+                            <img src="files/91.png" class="icon">
+                            Cloyster
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="104">
+                            <img src="files/104.png" class="icon">
+                            Cubone
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="87">
+                            <img src="files/87.png" class="icon">
+                            Dewgong
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="50">
+                            <img src="files/50.png" class="icon">
+                            Diglett
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="132">
+                            <img src="files/132.png" class="icon">
+                            Ditto
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="85">
+                            <img src="files/85.png" class="icon">
+                            Dodrio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="84">
+                            <img src="files/84.png" class="icon">
+                            Doduo
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="148">
+                            <img src="files/148.png" class="icon">
+                            Dragonair
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="149">
+                            <img src="files/149.png" class="icon">
+                            Dragonite
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="147">
+                            <img src="files/147.png" class="icon">
+                            Dratini
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="96">
+                            <img src="files/96.png" class="icon">
+                            Drowzee
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="51">
+                            <img src="files/51.png" class="icon">
+                            Dugtrio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="133">
+                            <img src="files/133.png" class="icon">
+                            Eevee
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="23">
+                            <img src="files/23.png" class="icon">
+                            Ekans
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="125">
+                            <img src="files/125.png" class="icon">
+                            Electabuzz
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="101">
+                            <img src="files/101.png" class="icon">
+                            Electrode
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="102">
+                            <img src="files/102.png" class="icon">
+                            Exeggcute
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="103">
+                            <img src="files/103.png" class="icon">
+                            Exeggutor
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="83">
+                            <img src="files/83.png" class="icon">
+                            Farfetch'd
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="22">
+                            <img src="files/22.png" class="icon">
+                            Fearow
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="136">
+                            <img src="files/136.png" class="icon">
+                            Flareon
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="92">
+                            <img src="files/92.png" class="icon">
+                            Gastly
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="94">
+                            <img src="files/94.png" class="icon">
+                            Gengar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="74">
+                            <img src="files/74.png" class="icon">
+                            Geodude
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="44">
+                            <img src="files/44.png" class="icon">
+                            Gloom
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="42">
+                            <img src="files/42.png" class="icon">
+                            Golbat
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="118">
+                            <img src="files/118.png" class="icon">
+                            Goldeen
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="55">
+                            <img src="files/55.png" class="icon">
+                            Golduck
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="76">
+                            <img src="files/76.png" class="icon">
+                            Golem
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="75">
+                            <img src="files/75.png" class="icon">
+                            Graveler
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="88">
+                            <img src="files/88.png" class="icon">
+                            Grimer
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="58">
+                            <img src="files/58.png" class="icon">
+                            Growlithe
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="130">
+                            <img src="files/130.png" class="icon">
+                            Gyarados
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="93">
+                            <img src="files/93.png" class="icon">
+                            Haunter
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="107">
+                            <img src="files/107.png" class="icon">
+                            Hitmonchan
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="106">
+                            <img src="files/106.png" class="icon">
+                            Hitmonlee
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="116">
+                            <img src="files/116.png" class="icon">
+                            Horsea
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="97">
+                            <img src="files/97.png" class="icon">
+                            Hypno
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="2">
+                            <img src="files/2.png" class="icon">
+                            Ivysaur
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="39">
+                            <img src="files/39.png" class="icon">
+                            Jigglypuff
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="135">
+                            <img src="files/135.png" class="icon">
+                            Jolteon
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="124">
+                            <img src="files/124.png" class="icon">
+                            Jynx
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="140">
+                            <img src="files/140.png" class="icon">
+                            Kabuto
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="141">
+                            <img src="files/141.png" class="icon">
+                            Kabutops
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="64">
+                            <img src="files/64.png" class="icon">
+                            Kadabra
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="14">
+                            <img src="files/14.png" class="icon">
+                            Kakuna
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="115">
+                            <img src="files/115.png" class="icon">
+                            Kangaskhan
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="99">
+                            <img src="files/99.png" class="icon">
+                            Kingler
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="109">
+                            <img src="files/109.png" class="icon">
+                            Koffing
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="98">
+                            <img src="files/98.png" class="icon">
+                            Krabby
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="131">
+                            <img src="files/131.png" class="icon">
+                            Lapras
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="108">
+                            <img src="files/108.png" class="icon">
+                            Lickitung
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="68">
+                            <img src="files/68.png" class="icon">
+                            Machamp
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="67">
+                            <img src="files/67.png" class="icon">
+                            Machoke
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="66">
+                            <img src="files/66.png" class="icon">
+                            Machop
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="129">
+                            <img src="files/129.png" class="icon">
+                            Magikarp
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="126">
+                            <img src="files/126.png" class="icon">
+                            Magmar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="81">
+                            <img src="files/81.png" class="icon">
+                            Magnemite
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="82">
+                            <img src="files/82.png" class="icon">
+                            Magneton
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="56">
+                            <img src="files/56.png" class="icon">
+                            Mankey
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="105">
+                            <img src="files/105.png" class="icon">
+                            Marowak
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="52">
+                            <img src="files/52.png" class="icon">
+                            Meowth
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="11">
+                            <img src="files/11.png" class="icon">
+                            Metapod
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="151">
+                            <img src="files/151.png" class="icon">
+                            Mew
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="150">
+                            <img src="files/150.png" class="icon">
+                            Mewtwo
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="146">
+                            <img src="files/146.png" class="icon">
+                            Moltres
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="122">
+                            <img src="files/122.png" class="icon">
+                            Mr. Mime
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="89">
+                            <img src="files/89.png" class="icon">
+                            Muk
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="34">
+                            <img src="files/34.png" class="icon">
+                            Nidoking
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="31">
+                            <img src="files/31.png" class="icon">
+                            Nidoqueen
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="29">
+                            <img src="files/29.png" class="icon">
+                            Nidoran♀
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="32">
+                            <img src="files/32.png" class="icon">
+                            Nidoran♂
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="30">
+                            <img src="files/30.png" class="icon">
+                            Nidorina
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="33">
+                            <img src="files/33.png" class="icon">
+                            Nidorino
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="38">
+                            <img src="files/38.png" class="icon">
+                            Ninetales
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="43">
+                            <img src="files/43.png" class="icon">
+                            Oddish
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="138">
+                            <img src="files/138.png" class="icon">
+                            Omanyte
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="139">
+                            <img src="files/139.png" class="icon">
+                            Omastar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="95">
+                            <img src="files/95.png" class="icon">
+                            Onix
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="46">
+                            <img src="files/46.png" class="icon">
+                            Paras
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="47">
+                            <img src="files/47.png" class="icon">
+                            Parasect
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="53">
+                            <img src="files/53.png" class="icon">
+                            Persian
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="18">
+                            <img src="files/18.png" class="icon">
+                            Pidgeot
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="17">
+                            <img src="files/17.png" class="icon">
+                            Pidgeotto
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="16">
+                            <img src="files/16.png" class="icon">
+                            Pidgey
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="25">
+                            <img src="files/25.png" class="icon">
+                            Pikachu
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="127">
+                            <img src="files/127.png" class="icon">
+                            Pinsir
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="60">
+                            <img src="files/60.png" class="icon">
+                            Poliwag
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="61">
+                            <img src="files/61.png" class="icon">
+                            Poliwhirl
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="62">
+                            <img src="files/62.png" class="icon">
+                            Poliwrath
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="77">
+                            <img src="files/77.png" class="icon">
+                            Ponyta
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="137">
+                            <img src="files/137.png" class="icon">
+                            Porygon
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="57">
+                            <img src="files/57.png" class="icon">
+                            Primeape
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="54">
+                            <img src="files/54.png" class="icon">
+                            Psyduck
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="26">
+                            <img src="files/26.png" class="icon">
+                            Raichu
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="78">
+                            <img src="files/78.png" class="icon">
+                            Rapidash
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="20">
+                            <img src="files/20.png" class="icon">
+                            Raticate
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="19">
+                            <img src="files/19.png" class="icon">
+                            Rattata
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="112">
+                            <img src="files/112.png" class="icon">
+                            Rhydon
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="111">
+                            <img src="files/111.png" class="icon">
+                            Rhyhorn
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="27">
+                            <img src="files/27.png" class="icon">
+                            Sandshrew
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="28">
+                            <img src="files/28.png" class="icon">
+                            Sandslash
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="123">
+                            <img src="files/123.png" class="icon">
+                            Scyther
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="117">
+                            <img src="files/117.png" class="icon">
+                            Seadra
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="119">
+                            <img src="files/119.png" class="icon">
+                            Seaking
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="86">
+                            <img src="files/86.png" class="icon">
+                            Seel
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="90">
+                            <img src="files/90.png" class="icon">
+                            Shellder
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="80">
+                            <img src="files/80.png" class="icon">
+                            Slowbro
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="79">
+                            <img src="files/79.png" class="icon">
+                            Slowpoke
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="143">
+                            <img src="files/143.png" class="icon">
+                            Snorlax
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="21">
+                            <img src="files/21.png" class="icon">
+                            Spearow
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="7">
+                            <img src="files/7.png" class="icon">
+                            Squirtle
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="121">
+                            <img src="files/121.png" class="icon">
+                            Starmie
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="120">
+                            <img src="files/120.png" class="icon">
+                            Staryu
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="114">
+                            <img src="files/114.png" class="icon">
+                            Tangela
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="128">
+                            <img src="files/128.png" class="icon">
+                            Tauros
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="72">
+                            <img src="files/72.png" class="icon">
+                            Tentacool
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="73">
+                            <img src="files/73.png" class="icon">
+                            Tentacruel
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="134">
+                            <img src="files/134.png" class="icon">
+                            Vaporeon
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="49">
+                            <img src="files/49.png" class="icon">
+                            Venomoth
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="48">
+                            <img src="files/48.png" class="icon">
+                            Venonat
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="3">
+                            <img src="files/3.png" class="icon">
+                            Venusaur
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="71">
+                            <img src="files/71.png" class="icon">
+                            Victreebel
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="45">
+                            <img src="files/45.png" class="icon">
+                            Vileplume
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="100">
+                            <img src="files/100.png" class="icon">
+                            Voltorb
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="37">
+                            <img src="files/37.png" class="icon">
+                            Vulpix
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="8">
+                            <img src="files/8.png" class="icon">
+                            Wartortle
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="13">
+                            <img src="files/13.png" class="icon">
+                            Weedle
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="70">
+                            <img src="files/70.png" class="icon">
+                            Weepinbell
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="110">
+                            <img src="files/110.png" class="icon">
+                            Weezing
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="40">
+                            <img src="files/40.png" class="icon">
+                            Wigglytuff
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="145">
+                            <img src="files/145.png" class="icon">
+                            Zapdos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="filterpokemon();" data-pokemon-id="41">
+                            <img src="files/41.png" class="icon">
+                            Zubat
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">Em promoção! (Pokémons com menor número de visualizações)</h1>
+
+                <div class="row placeholders" id="menosvisualizados">
+
+                </div>
+
+
+                <h2 class="sub-header">Pokemons Avistados</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped" id="tabela">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var pokemons = { "0": "All", "63": "Abra", "142": "Aerodactyl", "65": "Alakazam", "24": "Arbok", "59": "Arcanine", "144": "Articuno", "15": "Beedrill", "69": "Bellsprout", "9": "Blastoise", "1": "Bulbasaur", "12": "Butterfree", "10": "Caterpie", "113": "Chansey", "6": "Charizard", "4": "Charmander", "5": "Charmeleon", "36": "Clefable", "35": "Clefairy", "91": "Cloyster", "104": "Cubone", "87": "Dewgong", "50": "Diglett", "132": "Ditto", "85": "Dodrio", "84": "Doduo", "148": "Dragonair", "149": "Dragonite", "147": "Dratini", "96": "Drowzee", "51": "Dugtrio", "133": "Eevee", "23": "Ekans", "125": "Electabuzz", "101": "Electrode", "102": "Exeggcute", "103": "Exeggutor", "83": "Farfetch'd", "22": "Fearow", "136": "Flareon", "92": "Gastly", "94": "Gengar", "74": "Geodude", "44": "Gloom", "42": "Golbat", "118": "Goldeen", "55": "Golduck", "76": "Golem", "75": "Graveler", "88": "Grimer", "58": "Growlithe", "130": "Gyarados", "93": "Haunter", "107": "Hitmonchan", "106": "Hitmonlee", "116": "Horsea", "97": "Hypno", "2": "Ivysaur", "39": "Jigglypuff", "135": "Jolteon", "124": "Jynx", "140": "Kabuto", "141": "Kabutops", "64": "Kadabra", "14": "Kakuna", "115": "Kangaskhan", "99": "Kingler", "109": "Koffing", "98": "Krabby", "131": "Lapras", "108": "Lickitung", "68": "Machamp", "67": "Machoke", "66": "Machop", "129": "Magikarp", "126": "Magmar", "81": "Magnemite", "82": "Magneton", "56": "Mankey", "105": "Marowak", "52": "Meowth", "11": "Metapod", "151": "Mew", "150": "Mewtwo", "146": "Moltres", "122": "Mr. Mime", "89": "Muk", "34": "Nidoking", "31": "Nidoqueen", "29": "Nidoran♀", "32": "Nidoran♂", "30": "Nidorina", "33": "Nidorino", "38": "Ninetales", "43": "Oddish", "138": "Omanyte", "139": "Omastar", "95": "Onix", "46": "Paras", "47": "Parasect", "53": "Persian", "18": "Pidgeot", "17": "Pidgeotto", "16": "Pidgey", "25": "Pikachu", "127": "Pinsir", "60": "Poliwag", "61": "Poliwhirl", "62": "Poliwrath", "77": "Ponyta", "137": "Porygon", "57": "Primeape", "54": "Psyduck", "26": "Raichu", "78": "Rapidash", "20": "Raticate", "19": "Rattata", "112": "Rhydon", "111": "Rhyhorn", "27": "Sandshrew", "28": "Sandslash", "123": "Scyther", "117": "Seadra", "119": "Seaking", "86": "Seel", "90": "Shellder", "80": "Slowbro", "79": "Slowpoke", "143": "Snorlax", "21": "Spearow", "7": "Squirtle", "121": "Starmie", "120": "Staryu", "114": "Tangela", "128": "Tauros", "72": "Tentacool", "73": "Tentacruel", "134": "Vaporeon", "49": "Venomoth", "48": "Venonat", "3": "Venusaur", "71": "Victreebel", "45": "Vileplume", "100": "Voltorb", "37": "Vulpix", "8": "Wartortle", "13": "Weedle", "70": "Weepinbell", "110": "Weezing", "40": "Wigglytuff", "145": "Zapdos", "41": "Zubat" };
+
+
+        var pokemonid = 0;
+
+        var table = '';
+
+
+        $(document).ready(function () {
+            getPokemon(false, 1, 100, "");
+        })
+
+        function filterpokemon(e) {
+
+            var $sender = $(window.event.target);
+            if (typeof $sender.attr("data-pokemon-id") != typeof undefined) {
+                pokemonid = $sender.attr("data-pokemon-id");
+            }
+
+            var minuto = $("#minutos").val();
+            var somenteprevisao = $("#onlyprediction").is(':checked');
+
+            getPokemon(somenteprevisao, 1, 100, minuto);
+        }
+
+        $("#formbusca .form-control").change(function () {
+            filterpokemon();
+        })
+
+        function getPokemon(onlyprediction, upvotesmin, maxdownvotes, minutos) {
+            $("#tabela tbody tr").remove();
+
+            var onlyurl = "https://www.pokeradar.io/api/v1/submissions?deviceId=e81b85706c7511e6a9291b9fde1c960c&minLatitude=-23.69734973992077&maxLatitude=-23.40497044329242&minLongitude=-46.90441131591796&maxLongitude=-46.361961364746094&pokemonId=142";
+            var allurl = "https://www.pokeradar.io/api/v1/submissions?deviceId=e81b85706c7511e6a9291b9fde1c960c&minLatitude=-23.69734973992077&maxLatitude=-23.40497044329242&minLongitude=-46.90441131591796&maxLongitude=-46.361961364746094";
+
+            var url = "";
+
+            if (pokemonid != 0) {
+                url = "https://www.pokeradar.io/api/v1/submissions?deviceId=e81b85706c7511e6a9291b9fde1c960c&minLatitude=-23.69734973992077&maxLatitude=-23.40497044329242&minLongitude=-46.90441131591796&maxLongitude=-46.361961364746094&pokemonId=" + pokemonid;
+            } else {
+                url = "https://www.pokeradar.io/api/v1/submissions?deviceId=e81b85706c7511e6a9291b9fde1c960c&minLatitude=-23.69734973992077&maxLatitude=-23.40497044329242&minLongitude=-46.90441131591796&maxLongitude=-46.361961364746094&pokemonId=0";
+            }
+
+            var dataSet = [];
+
+            console.log(pokemons["149"]);
+
+            $.getJSON(url, function (data) {
+                $.each(data.data, function (k, v) {
+                    var Linha = [];
+
+                    var exibe = true;
+                    var dados = data.data[k];
+                    if (onlyprediction && dados["trainerName"] != "(Poke Radar Prediction)") {
+                        exibe = false;
+                    }
+
+                    if (exibe) {
+                        var dt = new Date(dados["created"] * 1000);
+                        var hor = dt.getHours();
+                        var min = dt.getMinutes();
+                        var seg = dt.getSeconds();
+
+                        //Linha.push(dados["id"]);
+                        Linha.push("<img style=\"width:44px;\" src=\"files/" + dados["pokemonId"] + ".png\">");
+                        Linha.push(pokemons[dados["pokemonId"]]);
+                        Linha.push(hor + ":" + min + ":" + seg);
+                        Linha.push(dados["downvotes"]);
+                        Linha.push(dados["upvotes"]);
+                        Linha.push(dados["latitude"]);
+                        Linha.push(dados["longitude"]);
+                        Linha.push(dados["pokemonId"]);
+                        Linha.push(dados["trainerName"]);
+                        Linha.push(dados["userId"]);
+                        Linha.push(dados["deviceId"]);
+
+                        dataSet.push(Linha);
+                    }
+                });
+                PopulaTabela(dataSet);
+                MenorNumero(dataSet);
+            });
+        }
+
+        function MenorNumero(dataSet)
+        {
+            $("#menosvisualizados").html("");
+            var agrupado = [];
+            for (x in dataSet) {
+                agrupado.push(dataSet[x][7])
+            }
+
+            var counts = [];
+            jQuery.each(agrupado, function (key, value) {
+                if (!counts.hasOwnProperty(value)) {
+                    counts[value] = 1;
+                } else {
+                    counts[value]++;
+                }
+            });
+
+            counts = sortProperties(counts);
+            
+            for (var i = 0; i < 20; i++) {
+                $("#menosvisualizados").append("<div class=\"col-xs-2 col-sm-1 placeholder\"><img src=\"files/" + counts[i][0] + ".png\" width=\"100\" class=\"img-responsive\"><h4>" + pokemons[counts[i][0]] + "</h4><span class=\"text-muted\">Qtd: " + counts[i][1] + "</span></div>");
+            }
+
+            
+        }
+
+        function sortProperties(obj) {
+            var sortable = [];
+            for (var key in obj)
+                if (obj.hasOwnProperty(key))
+                    sortable.push([key, obj[key]]);
+
+            sortable.sort(function (a, b) {
+                var x = a[1],
+                    y = b[1];
+                return x < y ? -1 : x > y ? 1 : 0;
+            });
+            return sortable;
+        }
+
+        function PopulaTabela(dataSet) {
+            if (table != '') {
+                table.destroy();
+                $('#tabela').empty();
+            }
+
+            table = $('#tabela').DataTable({
+                "bPaginate": false,
+                data: dataSet,
+                "order": [[ 2, "desc" ]],
+                columns: [
+                    { title: "Icon" },
+                    { title: "Nome" },
+                    { title: "Created", "type": "numeric-comma" },
+                    { title: "DownVotes" },
+                    { title: "UpVotes" },
+                    { title: "Latitude" },
+                    { title: "Longitude" },
+                    { title: "PokemonId" },
+                    { title: "Trainer" },
+                    { title: "UserId" },
+                    { title: "DeviceId" }
+                ]
+            });
+        }
+    </script>
+</body>
+</html>
